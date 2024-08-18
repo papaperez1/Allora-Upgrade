@@ -1,5 +1,38 @@
-# Allora-Upgrade
+# Allora-Upgrade - Run A Model Predicting Prices using Hugging Face Model with topic 1 to 9
 
+![image](https://github.com/user-attachments/assets/c4eda80a-41ed-4008-8463-9cd51e33eb7e)
+
+## For New Users
+
+follow till 'Wallet Setup' section from https://github.com/papaperez1/Allora/blob/main/README.md and come back to this guide.
+
+## For Exisitng users
+
+### Cleanup existing containers
+
+If you already have a runnnig worker, first remove the docker containers and cleanup the worker directory
+
+```
+cd $HOME && cd basic-coin-prediction-node
+docker compose down -v
+docker container prune
+```
+### Clone HuggingFace worker
+
+```
+cd $HOME
+git clone https://github.com/allora-network/allora-huggingface-walkthrough
+cd allora-huggingface-walkthrough
+```
+```
+mkdir -p worker-data
+chmod -R 777 worker-data
+```
+```
+rm config.example.json
+nano config.json
+```
+COpy below code and paste inside the file. Make sure you Update SeedPhrase
 ```
 {
     "wallet": {
@@ -8,7 +41,7 @@
         "alloraHomeDir": "/root/.allorad",
         "gas": "1000000",
         "gasAdjustment": 1.0,
-        "nodeRpc": "https://allora-rpc.testnet-1.testnet.allora.network/",
+        "nodeRpc": "https://rpc.ankr.com/allora_testnet",
         "maxRetries": 1,
         "delay": 1,
         "submitTx": false
@@ -94,17 +127,35 @@
                 "InferenceEndpoint": "http://inference:8000/inference/{Token}",
                 "Token": "ARB"
             }
-        },
-      {
-            "topicId": 11,
-            "inferenceEntrypointName": "api-worker-reputer",
-            "loopSeconds": 5,
-            "parameters": {
-                "InferenceEndpoint": "http://inference:8000/inference/{Token}",
-                "Token": "R"
-            }
         }
         
     ]
 }
 ```
+CTRL+X+Y to save the changes
+
+### Create coingecko API
+https://www.coingecko.com/en/developers/dashboard
+
+Replace Coingecko API in app.py
+
+```
+nano app.py
+```
+![image](https://github.com/user-attachments/assets/106786f7-9cd7-4e43-ab0d-363b29e87c34)
+
+CTRL+X+Y+Enter to save & exit
+
+### Run Huggingface Worker
+
+```
+chmod +x init.config
+./init.config
+```
+```
+docker compose up --build -d
+```
+```
+docker compose logs -f worker | grep Success
+```
+
