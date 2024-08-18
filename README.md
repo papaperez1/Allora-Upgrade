@@ -159,3 +159,4 @@ docker compose up --build -d
 docker compose logs -f worker | grep Success
 ```
 
+References: 0xmoei & https://docs.allora.network/home/explore
