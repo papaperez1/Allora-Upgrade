@@ -158,5 +158,10 @@ docker compose up --build -d
 ```
 docker compose logs -f worker | grep Success
 ```
+GO back to your dashboard https://shorturl.at/1nlGM - connect wallet and check points
+
+
+
+
 
 References: 0xmoei & https://docs.allora.network/home/explore
