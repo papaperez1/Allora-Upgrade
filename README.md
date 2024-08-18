@@ -17,6 +17,12 @@ cd $HOME && cd basic-coin-prediction-node
 docker compose down -v
 docker container prune
 ```
+```
+cd ..
+rm -rf basic-coin-prediction-node
+```
+
+
 ### Clone HuggingFace worker
 
 ```
