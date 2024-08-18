@@ -168,7 +168,9 @@ docker compose logs -f worker | grep Success
 ```
 GO back to your dashboard https://shorturl.at/1nlGM - connect wallet and check points
 
+### Check transactions
 
+http://worker-tx.nodium.xyz/
 
 
 
