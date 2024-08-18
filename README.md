@@ -38,7 +38,9 @@ chmod -R 777 worker-data
 rm config.example.json
 nano config.json
 ```
-COpy below code and paste inside the file. Make sure you Update SeedPhrase
+Copy below code and paste inside the file. Make sure you Update SeedPhrase.
+Alternate RPCs: https://beta.multi-rpc.com/allora_testnet/
+                https://allora-rpc.testnet-1.testnet.allora.network/
 ```
 {
     "wallet": {
